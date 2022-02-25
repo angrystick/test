@@ -34,10 +34,16 @@ export const fetchData = () => {
       //   .blockchain.smartContract.methods.cost()
       //   .call();
 
+      let freeMint = await store
+        .getState()
+        .blockchain.smartContract.methods.freeMint()
+        .call();
+
       dispatch(
         fetchDataSuccess({
           totalSupply,
           // cost,
+          freeMint,
         })
       );
     } catch (err) {

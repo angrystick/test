@@ -20,6 +20,7 @@ const dataReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         totalSupply: action.payload.totalSupply,
+        freeMint: action.payload.freeMint,
         // cost: action.payload.cost,
         error: false,
         errorMsg: "",

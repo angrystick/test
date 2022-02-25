@@ -1,0 +1,20 @@
+{
+    "CONTRACT_ADDRESS": "0x42E407feeDdd8326f8F5315Db446ea64A79E2eaf",
+    "SCAN_LINK": "https://rinkeby.etherscan.io/token/0x42E407feeDdd8326f8F5315Db446ea64A79E2eaf",
+    "NETWORK": {
+      "NAME": "Ethereum",
+      "SYMBOL": "Eth",
+      "ID": 4
+    },
+    "NFT_NAME": "ANGRY STICK",
+    "SYMBOL": "ANGRY STICK",
+    "MAX_SUPPLY": 2111,
+    "FREE_SUPPLY": 1000,
+    "WEI_COST": 75000000000000000,
+    "DISPLAY_COST": 0.01,
+    "GAS_LIMIT": 285000,
+    "MARKETPLACE": "Opeansea",
+    "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/",
+    "SHOW_BACKGROUND": true
+  }
+  

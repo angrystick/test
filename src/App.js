@@ -123,7 +123,16 @@ function App() {
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
+    let totalCostWei = cost * mintAmount;
+    if(data.freeMint > 0){
+      if (mintAmount >= data.freeMint) {
+        salePrice -= cost * data.freeMint;        
+      } 
+      else {
+        totalCostWei = 0;        
+      }        
+    }
+    totalCostWei = String(totalCostWei)
     let totalGasLimit = String(gasLimit * mintAmount);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
@@ -199,13 +208,13 @@ function App() {
         flex={1}
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
+        image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.jpg" : null}
       >
         <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
         <s.SpacerSmall />
-        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
+        <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick.jpg"} />
+            <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick.gif"} />
           </s.Container>
           <s.SpacerLarge />
           <s.Container
@@ -264,7 +273,12 @@ function App() {
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
                   1 {CONFIG.NFT_NAME} costs {CONFIG.DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
+                  {CONFIG.NETWORK.SYMBOL}.         
+                </s.TextTitle>
+                <s.TextTitle
+                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                >
+                  First {CONFIG.FREE_SUPPLY} free.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
@@ -371,7 +385,7 @@ function App() {
           </s.Container>
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
-          <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick.jpg"} style={{ transform: "scaleX(-1)" }}/>            
+          <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick.gif"} style={{ transform: "scaleX(-1)" }}/>            
           </s.Container>
         </ResponsiveWrapper>
         <s.SpacerMedium />
@@ -379,8 +393,8 @@ function App() {
           <s.TextDescription
             style={{
               textAlign: "center",
-              color: "var(--primary-text)",
-            }}
+              color: "var(--accent-text)",
+            }}          
           >
             Please make sure you are connected to the right network (
             {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
@@ -390,7 +404,7 @@ function App() {
           <s.TextDescription
             style={{
               textAlign: "center",
-              color: "var(--primary-text)",
+              color: "var(--accent-text)",
             }}
           >
             We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
