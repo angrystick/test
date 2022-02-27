@@ -22,9 +22,9 @@ export const StyledButton = styled.button`
   color: var(--secondary-text);
   width: 150px;
   cursor: pointer;
-  box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
-  -webkit-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
-  -moz-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
+  box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.2);
+  -webkit-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.2);
+  -moz-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.2);
   :active {
     box-shadow: none;
     -webkit-box-shadow: none;
