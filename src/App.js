@@ -16,8 +16,8 @@ export const StyledButton = styled.button`
   border-radius: 50px;
   border: none;
   background-color: var(--secondary);
-  padding: 10px;
-  font-size: 30px;
+  padding: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: var(--secondary-text);
   width: 150px;
@@ -102,12 +102,13 @@ export const StyledLink = styled.a`
 `;
 
 export const StyledDiv = styled.div`
-  width:150px;  
+  width:130px;  
   color: white;
   font-weight: bold;
   font-size: 20px;
   border-bottom:3px red solid;  
-  text-align: center;
+  text-align: right;
+  padding-bottom: 12px;
   align-self: center;
   cursor: pointer;
 `;
@@ -256,7 +257,7 @@ function App() {
             ai={"center"}
             style={{
               backgroundColor: "var(--accent)",
-              opacity:0.93,
+              opacity:0.82,
               padding: 24,
               borderRadius: 24,
               border: "4px dashed var(--secondary)",
