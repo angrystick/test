@@ -1,0 +1,23 @@
+
+.modal-content{
+    background-color: #1D1627;
+    color: white;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 12px !important;             
+}
+
+.modal-header{
+    padding: 30px;
+}
+
+.modal-body{
+    padding-top: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 80px;
+}
+
+.btn-close {
+    background-color: white;
+}

@@ -4,6 +4,9 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+import {Modal,Button} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -14,9 +17,10 @@ export const StyledButton = styled.button`
   border: none;
   background-color: var(--secondary);
   padding: 10px;
+  font-size: 30px;
   font-weight: bold;
   color: var(--secondary-text);
-  width: 100px;
+  width: 150px;
   cursor: pointer;
   box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
   -webkit-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
@@ -32,7 +36,7 @@ export const StyledRoundButton = styled.button`
   padding: 10px;
   border-radius: 100%;
   border: none;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   padding: 10px;
   font-weight: bold;
   font-size: 15px;
@@ -72,6 +76,9 @@ export const StyledLogo = styled.img`
   }
   transition: width 0.5s;
   transition: height 0.5s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const StyledImg = styled.img`
@@ -94,6 +101,22 @@ export const StyledLink = styled.a`
   text-decoration: none;
 `;
 
+export const StyledDiv = styled.div`
+  width:150px;  
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom:3px #fbc107 solid;  
+  text-align: center;
+  align-self: center;
+  cursor: pointer;
+`;
+
+export const StyledTop = styled.div`
+  display:flex;
+  width:100%;
+`;
+
 function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
@@ -101,6 +124,11 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -209,11 +237,16 @@ function App() {
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.jpg" : null}
-      >
-        <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
+      >                  
+      <StyledTop >
+        <div style={{width:150}}></div>
+        <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />                                            
+        <StyledDiv style = {{float:'right'} } onClick={handleShow}>Read the story</StyledDiv>                                         
+      </StyledTop>
+          
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
-          <s.Container flex={1} jc={"center"} ai={"center"}>
+          <s.Container flex={1} jc={"center"} ai={"center"}>            
             <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick.gif"} />
           </s.Container>
           <s.SpacerLarge />
@@ -385,7 +418,7 @@ function App() {
           </s.Container>
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
-          <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick.gif"} style={{ transform: "scaleX(-1)" }}/>            
+          <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick_rare.gif"} style={{ transform: "scaleX(-1)" }}/>            
           </s.Container>
         </ResponsiveWrapper>
         <s.SpacerMedium />
@@ -413,7 +446,22 @@ function App() {
           </s.TextDescription>
         </s.Container>
       </s.Container>
-    </s.Screen>
+
+      <Modal show={show} onHide={handleClose} dialogClassName="modal-lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Story of Angry Stick</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Once upon a time.... there was a boy name Sam. Sam was an average boy. One day while Sam was walking home a mysterious notebook fell from the sky, Sam got interested so he pick it up and put it in his bag and bought it home.
+          <br/><br/>
+          The next day during class Sam got bored, he pull out the mysterious notebook from his bag and started drawing. He drew a stick man with an angry expression with powerful power. All was peaceful and normal that all changed when the fire nation monsters suddenly appear and drop from the sky and started destroying the school and eating the school children.  
+          <br/><br/>
+          Sam was afraid so he hide under his desk. He look to the mysterious notebook that fell to the floor his drawing the stick man suddenly comes to life. The stick man with the angry expression protect Sam and slayed the fire nation monsters. Sam  named the stickman Angry Stick because he is always with angry expression. He can't change his expression because he was created with angry face from the drawing.
+          <br/><br/>
+          From that day onward Angry Stick protect earth from fire nation evil creatures who want to rule the earth.
+          </Modal.Body>        
+      </Modal>
+    </s.Screen>    
   );
 }
 
