@@ -106,7 +106,7 @@ export const StyledDiv = styled.div`
   color: white;
   font-weight: bold;
   font-size: 20px;
-  border-bottom:3px #fbc107 solid;  
+  border-bottom:3px red solid;  
   text-align: center;
   align-self: center;
   cursor: pointer;
