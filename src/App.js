@@ -155,7 +155,7 @@ function App() {
     let totalCostWei = cost * mintAmount;
     if(data.freeMint > 0){
       if (mintAmount >= data.freeMint) {
-        salePrice -= cost * data.freeMint;        
+        totalCostWei -= cost * data.freeMint;        
       } 
       else {
         totalCostWei = 0;        
