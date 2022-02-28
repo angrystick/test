@@ -186,6 +186,7 @@ function App() {
           `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
         );
         setClaimingNft(false);
+        setMintAmount(1);
         dispatch(fetchData(blockchain.account));
       });
   };
@@ -203,7 +204,9 @@ function App() {
     if (newMintAmount > 10) {
       newMintAmount = 10;
     }
-    setMintAmount(newMintAmount);
+    if((Number(CONFIG.MAX_SUPPLY) - (Number(data.totalSupply) + mintAmount +1))>=0){
+      setMintAmount(newMintAmount);
+    }
   };
 
   const getData = () => {
