@@ -118,6 +118,13 @@ export const StyledTop = styled.div`
   width:100%;
 `;
 
+export const SupplyWrapper = styled.div`
+  display:flex;
+  width:100%;
+  background:rgba(250, 0, 0, 0.2);  
+  border-radius: 24px;  
+`;
+
 function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
@@ -250,7 +257,7 @@ function App() {
           
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
-          <s.Container flex={1} jc={"center"} ai={"center"}>            
+          <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg alt={"angry stick image"} src={"/config/images/angry_stick.gif"} />
           </s.Container>
           <s.SpacerLarge />
@@ -266,17 +273,28 @@ function App() {
               border: "4px dashed var(--secondary)",
               boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
             }}
-          >
+          ><SupplyWrapper>
+            <s.Container flex={1} jc={"center"} ai={"center"}>
             <s.TextTitle
               style={{
                 textAlign: "center",
                 fontSize: 50,
                 fontWeight: "bold",
-                color: "var(--accent-text)",
+                color: "var(--accent-text)",                
               }}
             >
               {data.totalSupply} / {CONFIG.MAX_SUPPLY}
             </s.TextTitle>
+            <s.TextDescription
+            style={{
+              textAlign: "center",
+              color: "var(--accent-text)",
+            }}          
+          >
+            {data.freeMint} / {CONFIG.FREE_SUPPLY} Free mint left
+          </s.TextDescription>
+            </s.Container>
+            </SupplyWrapper>
             <s.TextDescription
               style={{
                 textAlign: "center",
@@ -311,20 +329,10 @@ function App() {
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
                   1 {CONFIG.NFT_NAME} costs {CONFIG.DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.         
-                </s.TextTitle>
-                <s.TextTitle
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
-                  First {CONFIG.FREE_SUPPLY} free.
-                </s.TextTitle>
-                <s.SpacerXSmall />
-                <s.TextDescription
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
-                  Excluding gas fees.
-                </s.TextDescription>
+                  {CONFIG.NETWORK.SYMBOL}.
+                </s.TextTitle>                
                 <s.SpacerSmall />
+                
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
