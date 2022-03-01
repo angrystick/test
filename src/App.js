@@ -291,7 +291,7 @@ function App() {
               color: "var(--accent-text)",
             }}          
           >
-            {data.freeMint} / {CONFIG.FREE_SUPPLY} Free mint left
+            {data.freeMint} Free mint left
           </s.TextDescription>
             </s.Container>
             </SupplyWrapper>
